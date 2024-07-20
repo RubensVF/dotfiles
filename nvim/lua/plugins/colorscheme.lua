@@ -1,21 +1,18 @@
 return {
   {
-    "Mofiqul/dracula.nvim",
+    "rebelot/kanagawa.nvim",
     lazy = false,
     priority = 1000,
     config = function()
-      require("dracula").setup({
-        transparent_bg = true,
+      require("kanagawa").setup({
+        transparent = true,
         -- otras opciones que quieras configurar
       })
-
-      vim.cmd.colorscheme("dracula")
-
+      vim.cmd.colorscheme("kanagawa")
       -- Función para establecer grupos de resaltado transparentes
       local function set_transparent_bg(group)
         vim.api.nvim_set_hl(0, group, { bg = "NONE", ctermbg = "NONE" })
       end
-
       -- Lista de grupos para hacer transparentes
       local groups = {
         "Normal",
@@ -35,14 +32,13 @@ return {
         "EndOfBuffer",
         "Pmenu",
       }
-
       for _, group in ipairs(groups) do
         set_transparent_bg(group)
       end
-
       -- Asegúrate de que LineNr y CursorLineNr tengan colores de primer plano
-      vim.api.nvim_set_hl(0, "LineNr", { fg = "#6272A4", bg = "NONE" })
-      vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#F1FA8C", bg = "NONE" })
+      -- Nota: Estos colores son sugerencias basadas en la paleta de Kanagawa
+      vim.api.nvim_set_hl(0, "LineNr", { fg = "#54546D", bg = "NONE" })
+      vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#C8C093", bg = "NONE" })
     end,
   },
 }

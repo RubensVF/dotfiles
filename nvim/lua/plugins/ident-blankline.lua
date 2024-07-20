@@ -3,9 +3,10 @@ return {
   main = "ibl",
   opts = {},
   config = function(_, opts)
-    -- Asegúrate de que los grupos de resaltado existan antes de configurar ibl
-    vim.api.nvim_set_hl(0, "LineNr", { fg = "#6272A4" })
-    vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#F1FA8C" })
+    local colors = require("kanagawa.colors").setup()
+
+    vim.api.nvim_set_hl(0, "LineNr", { fg = colors.theme.ui.nontext })
+    vim.api.nvim_set_hl(0, "CursorLineNr", { fg = colors.theme.ui.special })
 
     require("ibl").setup(vim.tbl_deep_extend("force", opts, {
       indent = {
@@ -19,6 +20,6 @@ return {
       },
     }))
 
-    vim.api.nvim_set_hl(0, "IblScope", { fg = "#BD93F9" })
+    vim.api.nvim_set_hl(0, "IblScope", { fg = colors.theme.syn.identifier })
   end,
 }
